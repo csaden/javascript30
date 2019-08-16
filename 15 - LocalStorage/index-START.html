@@ -88,6 +88,15 @@
 
       addItems.addEventListener('submit', handleAddItem);
       populateList(items, itemsList);
+
+      // persist the checkbox state
+      itemsList.addEventListener('click', e => {
+        if (!e.target.matches('input')) return;
+        const i = e.target.dataset.index;
+        console.log(i);
+        items[i].done = !items[i].done;
+        localStorage.setItem('items', JSON.stringify(items));
+      });
     </script>
   </body>
 </html>
